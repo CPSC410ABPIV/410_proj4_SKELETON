@@ -23,13 +23,16 @@ int Waiter::getNext(ORDER &anOrder){
 }
 
 void Waiter::beWaiter() {
-    ORDER order;
+    ORDER order;//holds orders as the loop gets them from fileio
     while(getNext(order) == SUCCESS){
-        unique_lock<mutex> order_inQ_lock(mutex_order_inQ);
+        unique_lock<mutex> lck(mutex_order_inQ);
         order_in_Q.push(order);
-        order_inQ_lock.unlock();
+        lck.unlock();
         cv_order_inQ.notify_all();
     }
+    //signals baker(s) using cv_order_inQ
+    unique_lock<mutex> lck(mutex_order_inQ);
     b_WaiterIsFinished = true;
+    cv_order_inQ.notify_all();
 }
 

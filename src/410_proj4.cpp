@@ -83,7 +83,7 @@ void audit_results() {
 	PRINT2("Total number boxes  = ", total_boxes);
 	PRINT2("Total orders filled = ", total_orders);
 }
-
+///////////////////
 vector<thread> threads;
 void joinThreads(){
     for(thread &t : threads){
@@ -114,9 +114,10 @@ void Test(int bakers, string file){
 int main()
 {
     for(int i = 1; i< 101; i++){
-        Test(i, "in1.txt");
-        Test(i, "in2.txt");
-        Test(i, "in3.txt");
+        Test(i, "in1.txt");//15,5,5
+        Test(i, "in2.txt");//40/5/5
+        Test(i, "in3.txt");//65/8/5
+        Test(i, "in4.txt");//660/60/14
         PRINT1("---------------------------------------------")
     }
 	return SUCCESS;

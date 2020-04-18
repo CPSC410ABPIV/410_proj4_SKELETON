@@ -28,7 +28,7 @@ mutex mutex_order_outQ;
 condition_variable cv_order_inQ;
 
 //when true its time for the baker to quit
-bool b_WaiterIsFinished = false;	
+bool b_WaiterIsFinished = false;
 
 //where orders are stored
 queue<ORDER> order_in_Q;
@@ -75,7 +75,7 @@ void audit_results() {
 		}
 
 		//if one order was screwed up say so
-		if (numDonuts != itOrder->number_donuts) 
+		if (numDonuts != itOrder->number_donuts)
 			PRINT6("ERROR Order", itOrder->order_number, " Expected ", itOrder->number_donuts, " found ", numDonuts);
 	}
 
@@ -84,9 +84,39 @@ void audit_results() {
 	PRINT2("Total orders filled = ", total_orders);
 }
 
+vector<thread> threads;
+void joinThreads(){
+    for(thread &t : threads){
+        t.join();
+    }
+    threads.clear();
+}
+void clean(){
+    b_WaiterIsFinished = false;
+    while(!order_in_Q.empty()){
+        order_in_Q.pop();
+    }
+    order_out_Vector.clear();
+}
+void Test(int bakers, string file){
+    string  testDescription = "Testing " + to_string(bakers) + " bakers on file: "+file;
+    PRINT1(testDescription);
+    threads.push_back(thread(doWaiter, 1, file));
+    for(int i = 0; i < bakers; i++){
+        threads.push_back(thread(doBaker, i));
+    }
+    joinThreads();
+    audit_results();
+    clean();
+    PRINT1("End Test: "+testDescription);
+}
+
 int main()
 {
-	//TODO your code here
+	Test(1, "in1.txt");
+    Test(2, "in1.txt");
+    Test(3, "in1.txt");
+    Test(4, "in1.txt");
 	return SUCCESS;
 }
 

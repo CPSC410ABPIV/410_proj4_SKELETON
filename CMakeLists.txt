@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 project(410_proj4_SKELETON)
 
 set(CMAKE_CXX_STANDARD 14)
+SET(CMAKE_CXX_FLAGS -pthread)
 
 include_directories(includes)
 

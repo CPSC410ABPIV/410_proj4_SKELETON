@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/allan/CLionProjects/410_proj4_SKELETON/includes/constants.h
+iostream
+-
+string
+-
+
+/home/allan/CLionProjects/410_proj4_SKELETON/includes/logger.h
+string
+-
+fstream
+-
+iostream
+-
+mutex
+-
+../includes/constants.h
+/home/allan/CLionProjects/410_proj4_SKELETON/includes/constants.h
+
+/home/allan/CLionProjects/410_proj4_SKELETON/logger/logger.cpp
+../includes/logger.h
+/home/allan/CLionProjects/410_proj4_SKELETON/includes/logger.h
+

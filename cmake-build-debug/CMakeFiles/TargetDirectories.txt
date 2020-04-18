@@ -1,0 +1,3 @@
+/home/allan/CLionProjects/410_proj4_SKELETON/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/allan/CLionProjects/410_proj4_SKELETON/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/allan/CLionProjects/410_proj4_SKELETON/cmake-build-debug/CMakeFiles/410_proj4_SKELETON.dir

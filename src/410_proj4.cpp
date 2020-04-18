@@ -108,15 +108,17 @@ void Test(int bakers, string file){
     joinThreads();
     audit_results();
     clean();
-    PRINT1("End Test: "+testDescription);
+    PRINT1("End Test: "+testDescription + "\n");
 }
 
 int main()
 {
-	Test(1, "in1.txt");
-    Test(2, "in1.txt");
-    Test(3, "in1.txt");
-    Test(4, "in1.txt");
+    for(int i = 1; i< 101; i++){
+        Test(i, "in1.txt");
+        Test(i, "in2.txt");
+        Test(i, "in3.txt");
+        PRINT1("---------------------------------------------")
+    }
 	return SUCCESS;
 }
 
